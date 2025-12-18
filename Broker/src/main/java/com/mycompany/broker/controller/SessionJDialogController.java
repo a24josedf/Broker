@@ -1,7 +1,7 @@
 package com.mycompany.broker.controller;
 
 import com.mycompany.broker.model.MainModel;
-import com.mycompany.broker.model.User;
+import com.mycompany.broker.model.Agent;
 import com.mycompany.broker.view.SessionJDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +32,7 @@ public class SessionJDialogController {
         File file = new File ("users.ser");
         String username = view.getUsername().trim();
         Double balance = Double.parseDouble(view.getBalance().trim());
-        User u = new User(username, balance);
+        Agent u = new Agent(username, balance);
             
         
     }
@@ -40,7 +40,7 @@ public class SessionJDialogController {
         File file = new File ("users.ser");
         String username = view.getUsername().trim();
         Double balance = Double.parseDouble(view.getBalance().trim());
-        User u = new User(username, balance);
+        Agent u = new Agent(username, balance);
         
     }
     

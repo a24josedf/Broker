@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.broker.view;
 
 import java.awt.BorderLayout;
@@ -10,7 +6,6 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
 /**
  *
  * @author dam2_alu09@inf.ald
@@ -33,110 +28,122 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        logoPanel = new javax.swing.JPanel();
-        mainMenuBar = new javax.swing.JMenuBar();
-        optionsMenu = new javax.swing.JMenu();
-        sessionMenuItem = new javax.swing.JMenuItem();
-        digimonMenuItem = new javax.swing.JMenuItem();
-        personalListMenuItem = new javax.swing.JMenuItem();
-        quitMenuItem = new javax.swing.JMenuItem();
+        mainTabbedPane = new javax.swing.JTabbedPane();
+        graphicPanel = new javax.swing.JPanel();
+        agentsPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        addButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
+        operationsPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        logoPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
-        logoPanel.setLayout(logoPanelLayout);
-        logoPanelLayout.setHorizontalGroup(
-            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout graphicPanelLayout = new javax.swing.GroupLayout(graphicPanel);
+        graphicPanel.setLayout(graphicPanelLayout);
+        graphicPanelLayout.setHorizontalGroup(
+            graphicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
         );
-        logoPanelLayout.setVerticalGroup(
-            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+        graphicPanelLayout.setVerticalGroup(
+            graphicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 269, Short.MAX_VALUE)
         );
 
-        optionsMenu.setText("Options");
+        mainTabbedPane.addTab("Bolsa", graphicPanel);
 
-        sessionMenuItem.setText("Session..");
-        optionsMenu.add(sessionMenuItem);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        digimonMenuItem.setText("DigimonAPI..");
-        optionsMenu.add(digimonMenuItem);
+        addButton.setText("Añadir");
 
-        personalListMenuItem.setText("Personal list..");
-        optionsMenu.add(personalListMenuItem);
+        editButton.setText("Editar");
 
-        quitMenuItem.setText("Quit");
-        optionsMenu.add(quitMenuItem);
+        removeButton.setText("Eliminar");
 
-        mainMenuBar.add(optionsMenu);
+        javax.swing.GroupLayout agentsPanelLayout = new javax.swing.GroupLayout(agentsPanel);
+        agentsPanel.setLayout(agentsPanelLayout);
+        agentsPanelLayout.setHorizontalGroup(
+            agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agentsPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+        agentsPanelLayout.setVerticalGroup(
+            agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agentsPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(agentsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addButton)
+                .addGap(18, 18, 18)
+                .addComponent(editButton)
+                .addGap(18, 18, 18)
+                .addComponent(removeButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        setJMenuBar(mainMenuBar);
+        mainTabbedPane.addTab("Agentes", agentsPanel);
+
+        javax.swing.GroupLayout operationsPanelLayout = new javax.swing.GroupLayout(operationsPanel);
+        operationsPanel.setLayout(operationsPanelLayout);
+        operationsPanelLayout.setHorizontalGroup(
+            operationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
+        );
+        operationsPanelLayout.setVerticalGroup(
+            operationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 269, Short.MAX_VALUE)
+        );
+
+        mainTabbedPane.addTab("Operaciones", operationsPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainTabbedPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainTabbedPane)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addQuitMenuItemActionListener(ActionListener al) {
-        this.quitMenuItem.addActionListener(al);
+    public void addAgentMenuItemActionListener(ActionListener al) {
+        this.addButton.addActionListener(al);
     }
 
-    public void addPersonalListMenuItemActionListener(ActionListener al) {
-        this.personalListMenuItem.addActionListener(al);
-    }
-
-    public void addDigimonMenuItemActionListener(ActionListener al) {
-        this.digimonMenuItem.addActionListener(al);
-    }
-
-    public void addSessionMenuItemActionListener(ActionListener al) {
-        this.sessionMenuItem.addActionListener(al);
-    }
-
-    public void setImageLogoPanel(Image img) {
-
-        JPanel panelWithImage = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                if (img != null) {
-
-                    g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-                }
-            }
-        };
-
-        panelWithImage.setPreferredSize(logoPanel.getSize());
-        panelWithImage.setLayout(new BorderLayout());
-
-        logoPanel.setLayout(new BorderLayout());
-        logoPanel.add(panelWithImage, BorderLayout.CENTER);
-        logoPanel.revalidate();
-        logoPanel.repaint();
-    }
-
-    public void setBackgroundImage() {
-        Image image1 = new ImageIcon("src/main/resources/img/digidex.png").getImage();
-        setImageLogoPanel(image1);
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem digimonMenuItem;
-    private javax.swing.JPanel logoPanel;
-    private javax.swing.JMenuBar mainMenuBar;
-    private javax.swing.JMenu optionsMenu;
-    private javax.swing.JMenuItem personalListMenuItem;
-    private javax.swing.JMenuItem quitMenuItem;
-    private javax.swing.JMenuItem sessionMenuItem;
+    private javax.swing.JButton addButton;
+    private javax.swing.JPanel agentsPanel;
+    private javax.swing.JButton editButton;
+    private javax.swing.JPanel graphicPanel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTabbedPane mainTabbedPane;
+    private javax.swing.JPanel operationsPanel;
+    private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 }

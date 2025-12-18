@@ -19,9 +19,7 @@ public class MainJFrameController {
     public MainJFrameController(MainJFrame view, MainModel model) {
         this.view = view;
         this.model = model;
-        this.view.setBackgroundImage();
-        this.view.addQuitMenuItemActionListener(getQuitMenuActionListener());
-        this.view.addSessionMenuItemActionListener(getSessionMenuActionListener());
+        this.view.addAgentMenuItemActionListener(this.getSessionMenuActionListener());
     }
 
     private ActionListener getQuitMenuActionListener() {
