@@ -32,7 +32,7 @@ public class SessionJDialogController {
         File file = new File ("users.ser");
         String username = view.getUsername().trim();
         Double balance = Double.parseDouble(view.getBalance().trim());
-        Agent u = new Agent(username, balance);
+        //Agent u = new Agent(username, balance);
             
         
     }
@@ -40,7 +40,7 @@ public class SessionJDialogController {
         File file = new File ("users.ser");
         String username = view.getUsername().trim();
         Double balance = Double.parseDouble(view.getBalance().trim());
-        Agent u = new Agent(username, balance);
+        //Agent u = new Agent(username, balance);
         
     }
     
