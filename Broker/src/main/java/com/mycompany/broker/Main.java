@@ -1,7 +1,7 @@
 package com.mycompany.broker;
 
 import com.mycompany.broker.controller.MainJFrameController;
-import com.mycompany.broker.model.MainModel;
+import com.mycompany.broker.model.Agents;
 import com.mycompany.broker.view.MainJFrame;
 
 /**
@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         MainJFrame mainView = new MainJFrame();
-        MainModel mainModel = new MainModel();
+        Agents mainModel = new Agents();
         MainJFrameController mainController = new MainJFrameController(mainView, mainModel);
         mainView.setVisible(true);
         //Persistencia usuarios y operaciones

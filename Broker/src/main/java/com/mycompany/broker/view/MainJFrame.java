@@ -5,12 +5,14 @@ import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author dam2_alu09@inf.ald
@@ -64,15 +66,30 @@ public class MainJFrame extends javax.swing.JFrame {
 
         agentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Balance", "Stock"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         agentsScrollPane.setViewportView(agentsTable);
 
         editButton.setText("Editar...");
@@ -155,7 +172,7 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addAgentMenuItemActionListener(ActionListener al) {
+    public void addAAddButtonActionListener(ActionListener al) {
         this.addButton.addActionListener(al);
     }
 
@@ -231,6 +248,26 @@ public class MainJFrame extends javax.swing.JFrame {
         this.removeButton = removeButton;
     }
 
+    public void addRow(Vector row) {
+        DefaultTableModel model = (DefaultTableModel) this.agentsTable.getModel();
+        model.addRow(row);
+    }
+    
+    public String getSelectedComputer(){
+        int selectedRow = this.agentsTable.getSelectedRow();
+        String s = (String) this.agentsTable.getModel().getValueAt(selectedRow, 0);
+        System.out.println(s);
+        return s;
+    }
+    
+    public void clearTable() {
+        DefaultTableModel model = (DefaultTableModel) this.agentsTable.getModel();
+        model.setRowCount(0);
+        agentsTable.clearSelection();
+        agentsTable.revalidate();
+        agentsTable.repaint();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JScrollPane agentsOperationScrollPane;

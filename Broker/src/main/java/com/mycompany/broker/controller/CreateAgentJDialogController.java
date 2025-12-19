@@ -1,8 +1,9 @@
 package com.mycompany.broker.controller;
 
-import com.mycompany.broker.model.MainModel;
 import com.mycompany.broker.model.Agent;
+import com.mycompany.broker.model.Agents;
 import com.mycompany.broker.view.AgentJDialog;
+import com.mycompany.broker.view.MainJFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,39 +17,58 @@ import javax.swing.JOptionPane;
  * @author dam2_alu09@inf.ald
  */
 public class CreateAgentJDialogController {
-
+    
     private final AgentJDialog view;
-    private final MainModel model;
-
-    public CreateAgentJDialogController(AgentJDialog view, MainModel model) throws IOException, ClassNotFoundException {
+    private final Agents model;
+    private final MainJFrameController parent;
+    
+    public CreateAgentJDialogController(AgentJDialog view, Agents model, MainJFrameController parent) throws IOException, ClassNotFoundException {
         this.view = view;
         this.model = model;
-        manageLogInButton();
-        this.view.addLogInButtonActionListener(this.getLogInButtonActionListener());
-        this.view.addSingUpButtonActionListener(this.getSingUpButtonActionListener());
+        this.parent = parent;
+        this.view.addAddButtonActionListener(this.addAddButtonActionListener());
+        this.view.addCancelButtonActionListener(this.addCancelButtonActionListener());
     }
-
-    private void verifyLogIn() throws IOException, ClassNotFoundException {
-        File file = new File ("users.ser");
-        String username = view.getUsername().trim();
-        Double balance = Double.parseDouble(view.getBalance().trim());
-        //Agent u = new Agent(username, balance);
-            
-        
-    }
-    private void verifySingUp() throws IOException, ClassNotFoundException {
-        File file = new File ("users.ser");
-        String username = view.getUsername().trim();
-        Double balance = Double.parseDouble(view.getBalance().trim());
-        //Agent u = new Agent(username, balance);
+    
+    private void verify() throws IOException, ClassNotFoundException {
+        File file = new File("agents.ser");
+        String name = view.getName().trim();
+        String balance = view.getBalance().trim();
+        String stock = view.getStock().trim();
+        /*if (true) {
+            else{*/
+        if (Integer.parseInt(stock.trim()) < 0) {
+            JOptionPane.showMessageDialog(view, "El stock no puede ser negativo");
+        }
+        if (Double.parseDouble(view.getBalance().trim()) < 0) {
+            JOptionPane.showMessageDialog(view, "El balance no puede ser negativo");
+        } else {
+            Agent u = new Agent(name, Double.parseDouble(view.getBalance().trim()), Integer.parseInt(stock.trim()));
+            System.out.println(u.toString());
+            model.addAgent(u);
+            parent.repaintTable();
+        }
+        /*
+        }
+        }*/
         
     }
     
-    private void clearView(){
-        view.setUsername("");
+    private void clearView() {
+        view.setName("");
         view.setBalance("");
+        view.setStock("");
     }
-
+    
+    private boolean stockTextFieldEmpty() {
+        String stock = view.getStock();
+        if (stock.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     private boolean balanceTextFieldEmpty() {
         String balance = view.getBalance();
         if (balance.isEmpty()) {
@@ -57,9 +77,9 @@ public class CreateAgentJDialogController {
             return false;
         }
     }
-
-    private boolean usernameTextFieldEmpty() {
-        String username = view.getUsername();
+    
+    private boolean nameTextFieldEmpty() {
+        String username = view.getName();
         if (username.isEmpty()) {
             return true;
         } else {
@@ -67,76 +87,40 @@ public class CreateAgentJDialogController {
         }
     }
     
-    private void manageLogInButton() throws IOException, ClassNotFoundException{
-        File file = new File ("users.ser");
-        if (file.length()<1) {
-            view.enableDisableLogInButton(false);
-        }else{
-            view.enableDisableLogInButton(true);
-        }
-    }
-    
-    public ActionListener getLogInButtonActionListener() {
+    public ActionListener addCancelButtonActionListener() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (usernameTextFieldEmpty()) {
-                    JOptionPane.showMessageDialog(view, "Introduce an user");
-                }
-                if (balanceTextFieldEmpty()) {
-
-                    JOptionPane.showMessageDialog(view, "Introduce balance");
-                }if(!usernameTextFieldEmpty() && !balanceTextFieldEmpty()){
-                    try {
-                        verifyLogIn();
-                    } catch (IOException ex) {
-                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-                try {
-                    manageLogInButton();
-                } catch (IOException ex) {
-                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                view.dispose();
             }
             
         };
         
         return al;
     }
-
-    public ActionListener getSingUpButtonActionListener() {
+    
+    public ActionListener addAddButtonActionListener() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (usernameTextFieldEmpty()) {
-                    JOptionPane.showMessageDialog(view, "Introduce an user");
-                }if (balanceTextFieldEmpty()) {
-                    JOptionPane.showMessageDialog(view, "Introduce a password");
-                }if(!usernameTextFieldEmpty() && !balanceTextFieldEmpty()){
+                if (nameTextFieldEmpty()) {
+                    JOptionPane.showMessageDialog(view, "Introduce a name");
+                }
+                if (stockTextFieldEmpty()) {
+                    JOptionPane.showMessageDialog(view, "Introduce balance");
+                }
+                if (!nameTextFieldEmpty() && !stockTextFieldEmpty()) {
                     try {
-                    verifySingUp();
+                        verify();
                     } catch (IOException ex) {
                         Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                try {
-                    manageLogInButton();
-                } catch (IOException ex) {
-                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         };
         return al;
     }
-
+    
 }

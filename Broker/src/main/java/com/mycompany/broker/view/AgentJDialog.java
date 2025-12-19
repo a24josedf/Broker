@@ -42,7 +42,7 @@ public class AgentJDialog extends javax.swing.JDialog {
 
         titleLabel.setText("Session");
 
-        usernameLabel.setText("Username:*");
+        usernameLabel.setText("Name:*");
 
         cancelButton.setText("Cancelar");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -122,27 +122,27 @@ public class AgentJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_addButtonActionPerformed
 
-    public JButton getLoginButton() {
+    public JButton getCancelButton() {
         return cancelButton;
     }
 
-    public void setLoginButton(JButton loginButton) {
+    public void setCancelButton(JButton loginButton) {
         this.cancelButton = loginButton;
     }
 
-    public JButton getSignupButton() {
+    public JButton getAddButton() {
         return addButton;
     }
 
-    public void setSignupButton(JButton signupButton) {
+    public void setAddButton(JButton signupButton) {
         this.addButton = signupButton;
     }
 
-    public String getUsername() {
+    public String getName() {
         return usernameTextField.getText();
     }
 
-    public void setUsername(String userName) {
+    public void setName(String userName) {
         this.usernameTextField.setText(userName);
     }
 
@@ -158,20 +158,16 @@ public class AgentJDialog extends javax.swing.JDialog {
         return stockTextField.getText();
     }
 
-    public void setStockTextField(String stock) {
+    public void setStock(String stock) {
         this.stockTextField.setText(stock);
     }
-
-    public void addSingUpButtonActionListener(ActionListener al) {
-        this.getSignupButton().addActionListener(al);
+    
+    public void addAddButtonActionListener(ActionListener al) {
+        this.addButton.addActionListener(al);
     }
-
-    public void addLogInButtonActionListener(ActionListener al) {
-        this.getLoginButton().addActionListener(al);
-    }
-
-    public void enableDisableLogInButton(boolean enableDisable) {
-        this.getLoginButton().setEnabled(enableDisable);
+    
+    public void addCancelButtonActionListener(ActionListener al) {
+        this.cancelButton.addActionListener(al);
     }
 
 

@@ -11,14 +11,20 @@ import java.util.ArrayList;
  * @author dam2_alu04@inf.ald
  */
 public class Agents {
-    private static ArrayList<Agent> agents;
+    private ArrayList<Agent> agents;
 
-    public static ArrayList<Agent> getAgents() {
+    public Agents(){
+        agents = new ArrayList<>();
+    }
+    public ArrayList<Agent> getAgents() {
         return agents;
     }
 
-    public static void setAgents(ArrayList<Agent> agents) {
-        Agents.agents = agents;
+    public void setAgents(ArrayList<Agent> agents) {
+        this.agents = agents;
     }
     
+    public void addAgent(Agent a ){
+        agents.add(a);
+    }
 }
