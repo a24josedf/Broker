@@ -24,7 +24,7 @@ public class OperationsController {
         this.view = view;
         this.model = model;
         this.parent = parent;
-        this.currentAgent = this.parent.selectedAgent();
+        this.currentAgent = model.getAgents().get(parent.selectedAgent());
         this.view.addAcceptBButtonActionListener(this.addAcceptBButtonActionListener());
         this.view.addAcceptSButtonActionListener(this.addAcceptSButtonActionListener());
         this.view.addCancelBButtonActionListener(this.addCancelBButtonActionListener());
@@ -98,7 +98,7 @@ public class OperationsController {
         String priceS = view.getPriceS();
         String quantityS = view.getQuantityS();
         Agent a = this.currentAgent;
-        if (quantityBTextFieldEmpty()||priceBTextFieldEmpty()) {
+        if (quantitySTextFieldEmpty()||priceSTextFieldEmpty()) {
             JOptionPane.showMessageDialog(view, "Rellena todos los campos");
         }else{
             if (Double.parseDouble(priceS)<0) {
@@ -110,9 +110,12 @@ public class OperationsController {
                 if (this.currentAgent.getSaleOperation()!=null) {
                     JOptionPane.showMessageDialog(view, "Este agente ya tiene una operacion de venta");
                 }else{
-                    createOperation(type, Double.parseDouble(priceS), Integer.parseInt(quantityS));                    
+                    createOperation(type, Double.parseDouble(priceS), Integer.parseInt(quantityS));  
+                    model.getAgents().remove(currentAgent);                  
                     model.addOperation(currentAgent.getSaleOperation());
-                    model.serializeOperationsList();parent.repaintOperationsTable();
+                    model.addAgent(currentAgent);
+                    model.serializeOperationsList();
+                    parent.repaintOperationsTable();
                 }
             }
         }

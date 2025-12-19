@@ -56,8 +56,8 @@ public class MainJFrameController {
 
     }
     
-    public Agent selectedAgent(){
-        return model.getAgents().get(view.getSelectedAgent());
+    public int selectedAgent(){
+        return view.getSelectedAgent();
     }
 
     private ActionListener addAddButtonActionListener() {
