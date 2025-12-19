@@ -1,7 +1,7 @@
 package com.mycompany.broker.controller;
 
 import com.mycompany.broker.model.Agent;
-import com.mycompany.broker.model.Agents;
+import com.mycompany.broker.model.MainModel;
 import com.mycompany.broker.view.AgentJDialog;
 import com.mycompany.broker.view.MainJFrame;
 import java.awt.event.ActionEvent;
@@ -16,13 +16,13 @@ import javax.swing.JOptionPane;
  *
  * @author dam2_alu09@inf.ald
  */
-public class CreateAgentJDialogController {
+public class CreateAgentController {
     
     private final AgentJDialog view;
-    private final Agents model;
+    private final MainModel model;
     private final MainJFrameController parent;
     
-    public CreateAgentJDialogController(AgentJDialog view, Agents model, MainJFrameController parent) throws IOException, ClassNotFoundException {
+    public CreateAgentController(AgentJDialog view, MainModel model, MainJFrameController parent) throws IOException, ClassNotFoundException {
         this.view = view;
         this.model = model;
         this.parent = parent;
@@ -35,22 +35,25 @@ public class CreateAgentJDialogController {
         String name = view.getName().trim();
         String balance = view.getBalance().trim();
         String stock = view.getStock().trim();
-        /*if (true) {
-            else{*/
-        if (Integer.parseInt(stock.trim()) < 0) {
-            JOptionPane.showMessageDialog(view, "El stock no puede ser negativo");
+        if (nameExists(name)) {
+            JOptionPane.showMessageDialog(view, "El agente ya existe");
         }
-        if (Double.parseDouble(view.getBalance().trim()) < 0) {
-            JOptionPane.showMessageDialog(view, "El balance no puede ser negativo");
-        } else {
-            Agent u = new Agent(name, Double.parseDouble(view.getBalance().trim()), Integer.parseInt(stock.trim()));
-            System.out.println(u.toString());
-            model.addAgent(u);
-            parent.repaintTable();
+        else {
+            if (Integer.parseInt(stock.trim()) < 0) {
+                JOptionPane.showMessageDialog(view, "El stock no puede ser negativo");
+            }
+            if (Double.parseDouble(view.getBalance().trim()) < 0) {
+                JOptionPane.showMessageDialog(view, "El balance no puede ser negativo");
+            } else {
+                Agent u = new Agent(name, Double.parseDouble(view.getBalance().trim()), Integer.parseInt(stock.trim()));
+                System.out.println(u.toString());
+                model.addAgent(u);
+                model.serializeAgentsList();
+                parent.repaintAgentsTable();
+            }
+
         }
-        /*
-        }
-        }*/
+        
         
     }
     
@@ -58,6 +61,16 @@ public class CreateAgentJDialogController {
         view.setName("");
         view.setBalance("");
         view.setStock("");
+    }
+    
+    private boolean nameExists(String name){
+        boolean flag = false;
+        for(Agent a : model.getAgents()){
+            if (a.getName().toLowerCase().equals(name.toLowerCase())){
+                flag = true;
+            }
+        }
+        return flag;
     }
     
     private boolean stockTextFieldEmpty() {
@@ -107,15 +120,18 @@ public class CreateAgentJDialogController {
                     JOptionPane.showMessageDialog(view, "Introduce a name");
                 }
                 if (stockTextFieldEmpty()) {
+                    JOptionPane.showMessageDialog(view, "Introduce stock");
+                }
+                if (balanceTextFieldEmpty()) {
                     JOptionPane.showMessageDialog(view, "Introduce balance");
                 }
-                if (!nameTextFieldEmpty() && !stockTextFieldEmpty()) {
+                if (!nameTextFieldEmpty() && !stockTextFieldEmpty() && !balanceTextFieldEmpty()) {
                     try {
                         verify();
                     } catch (IOException ex) {
-                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CreateAgentController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CreateAgentController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }

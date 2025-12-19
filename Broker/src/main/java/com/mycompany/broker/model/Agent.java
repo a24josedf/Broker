@@ -1,13 +1,15 @@
 package com.mycompany.broker.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author dam2_alu04@inf.ald
  */
-public class Agent {
+public class Agent implements Serializable{
 
+    private static final long serialVersionUID = 1L;
     private int id = 0;
     private String name;
     private double balance;
@@ -23,19 +25,20 @@ public class Agent {
 
     }
 
-    public boolean newOperation(Agent this, String type, double limit, double quantity) {
+    public boolean newOperation(Agent this, String type, double price, int quantity) {
         switch (type) {
-            case "compra":
+            case "Compra":
                 if (purchaseOperation == null) {
-                    purchaseOperation = new Operation(this, type, limit, quantity);
+                    purchaseOperation = new Operation(this, type, price, quantity);
+                    System.out.println(purchaseOperation.toString());
                 } else {
                     System.out.println("Ya existe una operacion de compra para el agente " + getName());
                     return false;
                 }
                 break;
-            case "venta":
+            case "Venta":
                 if (saleOperation == null) {
-                    saleOperation = new Operation(this, type, limit, quantity);
+                    saleOperation = new Operation(this, type, price, quantity);
                 } else {
                     System.out.println("Ya existe una operacion de venta para el agente " + getName());
                     return false;

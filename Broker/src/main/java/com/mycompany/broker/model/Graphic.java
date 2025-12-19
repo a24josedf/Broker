@@ -17,15 +17,12 @@ public class Graphic extends JFrame{
 
         // 1. Datos
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(12, "Ventas", "Enero");
-        dataset.addValue(18, "Ventas", "Febrero");
-        dataset.addValue(9, "Ventas", "Marzo");
 
         // 2. Crear gráfica
         JFreeChart chart = ChartFactory.createLineChart(
-                "Ventas Mensuales",
-                "Mes",
-                "Cantidad",
+                "Broker",
+                "Tiempo",
+                "Precio",
                 dataset
         );
 

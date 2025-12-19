@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package com.mycompany.broker.view;
+
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -34,7 +34,6 @@ public class OperationsJDialog extends javax.swing.JDialog {
         priceBTextField = new javax.swing.JTextField();
         quantityBTextField = new javax.swing.JTextField();
         cancelBButton = new javax.swing.JButton();
-        editBButton = new javax.swing.JButton();
         acceptBButton = new javax.swing.JButton();
         buyPanel = new javax.swing.JPanel();
         priceSLabel = new javax.swing.JLabel();
@@ -42,7 +41,6 @@ public class OperationsJDialog extends javax.swing.JDialog {
         priceSTextField = new javax.swing.JTextField();
         quantitySTextField = new javax.swing.JTextField();
         cancelSButton = new javax.swing.JButton();
-        editSButton = new javax.swing.JButton();
         acceptSButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -52,8 +50,6 @@ public class OperationsJDialog extends javax.swing.JDialog {
         quantityBLabel.setText("Cantidad:*");
 
         cancelBButton.setText("Cancelar");
-
-        editBButton.setText("Editar");
 
         acceptBButton.setText("Aceptar");
 
@@ -73,9 +69,7 @@ public class OperationsJDialog extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sellPanelLayout.createSequentialGroup()
                 .addComponent(acceptBButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(editBButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(cancelBButton))
         );
         sellPanelLayout.setVerticalGroup(
@@ -92,7 +86,6 @@ public class OperationsJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(sellPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelBButton)
-                    .addComponent(editBButton)
                     .addComponent(acceptBButton))
                 .addContainerGap())
         );
@@ -104,8 +97,6 @@ public class OperationsJDialog extends javax.swing.JDialog {
         quantitySLabel.setText("Cantidad:*");
 
         cancelSButton.setText("Cancelar");
-
-        editSButton.setText("Editar");
 
         acceptSButton.setText("Aceptar");
 
@@ -125,9 +116,7 @@ public class OperationsJDialog extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buyPanelLayout.createSequentialGroup()
                 .addComponent(acceptSButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(editSButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(cancelSButton))
         );
         buyPanelLayout.setVerticalGroup(
@@ -144,7 +133,6 @@ public class OperationsJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(buyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelSButton)
-                    .addComponent(editSButton)
                     .addComponent(acceptSButton))
                 .addContainerGap())
         );
@@ -165,56 +153,145 @@ public class OperationsJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OperationsJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OperationsJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OperationsJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OperationsJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                OperationsJDialog dialog = new OperationsJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    public void addAcceptBButtonActionListener(ActionListener al){
+        this.acceptBButton.addActionListener(al);
+    }
+    
+    public void addAcceptSButtonActionListener(ActionListener al){
+        this.acceptSButton.addActionListener(al);
+    }
+    
+    public void addCancelBButtonActionListener(ActionListener al){
+        this.cancelBButton.addActionListener(al);
+    }
+    
+    public void addCancelSButtonActionListener(ActionListener al){
+        this.cancelSButton.addActionListener(al);
+    }
+    
+    public JButton getAcceptBButton() {
+        return acceptBButton;
     }
 
+    public void setAcceptBButton(JButton acceptBButton) {
+        this.acceptBButton = acceptBButton;
+    }
+
+    public JButton getAcceptSButton() {
+        return acceptSButton;
+    }
+
+    public void setAcceptSButton(JButton acceptSButton) {
+        this.acceptSButton = acceptSButton;
+    }
+
+    public JButton getCancelBButton() {
+        return cancelBButton;
+    }
+
+    public void setCancelBButton(JButton cancelBButton) {
+        this.cancelBButton = cancelBButton;
+    }
+
+    public JButton getCancelSButton() {
+        return cancelSButton;
+    }
+
+    public void setCancelSButton(JButton cancelSButton) {
+        this.cancelSButton = cancelSButton;
+    }
+
+    public JTextField getPriceBTextField() {
+        return priceBTextField;
+    }
+
+    public void setPriceBTextField(JTextField priceBTextField) {
+        this.priceBTextField = priceBTextField;
+    }
+
+    public JTextField getPriceSTextField() {
+        return priceSTextField;
+    }
+
+    public void setPriceSTextField(JTextField priceSTextField) {
+        this.priceSTextField = priceSTextField;
+    }
+
+    public JTextField getQuantityBTextField() {
+        return quantityBTextField;
+    }
+
+    public void setQuantityBTextField(JTextField quantityBTextField) {
+        this.quantityBTextField = quantityBTextField;
+    }
+
+    public JTextField getQuantitySTextField() {
+        return quantitySTextField;
+    }
+
+    public void setQuantitySTextField(JTextField quantitySTextField) {
+        this.quantitySTextField = quantitySTextField;
+    }
+    
+    public String getPriceB() {
+        return priceBTextField.getText();
+    }
+
+    public void setPriceB(String priceB) {
+        this.priceBTextField.setText(priceB);
+    }
+
+    public String getPriceS() {
+        return priceSTextField.getText();
+    }
+
+    public void setPriceS(String priceS) {
+        this.priceSTextField.setText(priceS);
+    }
+
+    public String getQuantityB() {
+        return quantityBTextField.getText();
+    }
+
+    public void setQuantityB(String quantityB) {
+        this.quantityBTextField.setText(quantityB);
+    }
+
+    public String getQuantityS() {
+        return quantitySTextField.getText();
+    }
+
+    public void setQuantityS(String quantityS) {
+        this.quantitySTextField.setText(quantityS);
+    }
+
+    public void enableDisableTextFieldsB(boolean enableDisable){
+        priceBTextField.setEnabled(enableDisable);
+        quantityBTextField.setEnabled(enableDisable);
+        
+    }
+    
+    public void enableDisableTextFieldsS(boolean enableDisable){
+        priceSTextField.setEnabled(enableDisable);
+        quantitySTextField.setEnabled(enableDisable);
+        
+    }
+    
+    public void enableDisableAcceptCancelBButton(boolean enableDisable){
+        this.acceptBButton.setEnabled(enableDisable);
+        this.cancelBButton.setEnabled(enableDisable);
+    }
+    
+    public void enableDisableAcceptCancelSButton(boolean enableDisable){
+        this.acceptSButton.setEnabled(enableDisable);
+        this.cancelSButton.setEnabled(enableDisable);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptBButton;
     private javax.swing.JButton acceptSButton;
     private javax.swing.JPanel buyPanel;
     private javax.swing.JButton cancelBButton;
     private javax.swing.JButton cancelSButton;
-    private javax.swing.JButton editBButton;
-    private javax.swing.JButton editSButton;
     private javax.swing.JTabbedPane operationsTabbedPane;
     private javax.swing.JLabel priceBLabel;
     private javax.swing.JTextField priceBTextField;

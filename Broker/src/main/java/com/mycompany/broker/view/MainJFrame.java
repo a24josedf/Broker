@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -41,13 +42,11 @@ public class MainJFrame extends javax.swing.JFrame {
         agentsPanel = new javax.swing.JPanel();
         agentsScrollPane = new javax.swing.JScrollPane();
         agentsTable = new javax.swing.JTable();
-        editButton = new javax.swing.JButton();
-        removeButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        operationsButton = new javax.swing.JButton();
         operationsPanel = new javax.swing.JPanel();
-        agentsOperationScrollPane = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        agentsScrollPane1 = new javax.swing.JScrollPane();
+        operationsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +54,7 @@ public class MainJFrame extends javax.swing.JFrame {
         graphicPanel.setLayout(graphicPanelLayout);
         graphicPanelLayout.setHorizontalGroup(
             graphicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 406, Short.MAX_VALUE)
+            .addGap(0, 367, Short.MAX_VALUE)
         );
         graphicPanelLayout.setVerticalGroup(
             graphicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,10 +65,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         agentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre", "Balance", "Stock"
@@ -92,29 +88,21 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         agentsScrollPane.setViewportView(agentsTable);
 
-        editButton.setText("Editar...");
-
-        removeButton.setText("Eliminar");
-
         addButton.setText("Añadir...");
 
-        jButton1.setText("Operaciones...");
+        operationsButton.setText("Operaciones...");
 
         javax.swing.GroupLayout agentsPanelLayout = new javax.swing.GroupLayout(agentsPanel);
         agentsPanel.setLayout(agentsPanelLayout);
         agentsPanelLayout.setHorizontalGroup(
             agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agentsPanelLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(operationsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(removeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(agentsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(agentsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
         agentsPanelLayout.setVerticalGroup(
             agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,20 +112,36 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
-                    .addComponent(editButton)
-                    .addComponent(removeButton)
-                    .addComponent(jButton1))
+                    .addComponent(operationsButton))
                 .addGap(26, 26, 26))
         );
 
         mainTabbedPane.addTab("Agentes", agentsPanel);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        operationsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tipo", "Precio", "Cantidad", "Agente"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        agentsOperationScrollPane.setViewportView(jList2);
+        agentsScrollPane1.setViewportView(operationsTable);
 
         javax.swing.GroupLayout operationsPanelLayout = new javax.swing.GroupLayout(operationsPanel);
         operationsPanel.setLayout(operationsPanelLayout);
@@ -145,15 +149,12 @@ public class MainJFrame extends javax.swing.JFrame {
             operationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(operationsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(agentsOperationScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addComponent(agentsScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                .addContainerGap())
         );
         operationsPanelLayout.setVerticalGroup(
             operationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(operationsPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(agentsOperationScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
+            .addComponent(agentsScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
         );
 
         mainTabbedPane.addTab("Operaciones", operationsPanel);
@@ -172,8 +173,12 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addAAddButtonActionListener(ActionListener al) {
+    public void addAddButtonActionListener(ActionListener al) {
         this.addButton.addActionListener(al);
+    }
+    
+    public void addOperationsButtonActionListener(ActionListener al) {
+        this.operationsButton.addActionListener(al);
     }
 
     public JButton getAddButton() {
@@ -192,14 +197,6 @@ public class MainJFrame extends javax.swing.JFrame {
         this.agentsPanel = agentsPanel;
     }
 
-    public JButton getEditButton() {
-        return editButton;
-    }
-
-    public void setEditButton(JButton editButton) {
-        this.editButton = editButton;
-    }
-
     public JPanel getGraphicPanel() {
         return graphicPanel;
     }
@@ -216,12 +213,12 @@ public class MainJFrame extends javax.swing.JFrame {
         this.agentsScrollPane = jScrollPane1;
     }
 
-    public JTable getjTable1() {
+    public JTable getAgentsTable() {
         return agentsTable;
     }
 
-    public void setjTable1(JTable jTable1) {
-        this.agentsTable = jTable1;
+    public void setjTable1(JTable AgentsTable) {
+        this.agentsTable = AgentsTable;
     }
 
     public JTabbedPane getMainTabbedPane() {
@@ -239,47 +236,57 @@ public class MainJFrame extends javax.swing.JFrame {
     public void setOperationsPanel(JPanel operationsPanel) {
         this.operationsPanel = operationsPanel;
     }
-
-    public JButton getRemoveButton() {
-        return removeButton;
-    }
-
-    public void setRemoveButton(JButton removeButton) {
-        this.removeButton = removeButton;
-    }
-
-    public void addRow(Vector row) {
+    
+    public void addAgentRow(Vector row) {
         DefaultTableModel model = (DefaultTableModel) this.agentsTable.getModel();
         model.addRow(row);
     }
     
-    public String getSelectedComputer(){
-        int selectedRow = this.agentsTable.getSelectedRow();
-        String s = (String) this.agentsTable.getModel().getValueAt(selectedRow, 0);
-        System.out.println(s);
-        return s;
+    public void addOperationRow(Vector row) {
+        DefaultTableModel model = (DefaultTableModel) this.operationsTable.getModel();
+        model.addRow(row);
     }
     
-    public void clearTable() {
+    public int getSelectedAgent(){
+        return this.agentsTable.getSelectedRow();
+    }
+    
+    public void clearAgentsTable() {
         DefaultTableModel model = (DefaultTableModel) this.agentsTable.getModel();
         model.setRowCount(0);
         agentsTable.clearSelection();
         agentsTable.revalidate();
         agentsTable.repaint();
     }
+    public void clearOperationsTable() {
+        DefaultTableModel model = (DefaultTableModel) this.operationsTable.getModel();
+        model.setRowCount(0);
+        agentsTable.clearSelection();
+        agentsTable.revalidate();
+        agentsTable.repaint();
+    }
+
+    public JTable getOperationsTable() {
+        return operationsTable;
+    }
+
+    public void setOperationsTable(JTable operationsTable) {
+        this.operationsTable = operationsTable;
+    }
+
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JScrollPane agentsOperationScrollPane;
     private javax.swing.JPanel agentsPanel;
     private javax.swing.JScrollPane agentsScrollPane;
+    private javax.swing.JScrollPane agentsScrollPane1;
     private javax.swing.JTable agentsTable;
-    private javax.swing.JButton editButton;
     private javax.swing.JPanel graphicPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JTabbedPane mainTabbedPane;
+    private javax.swing.JButton operationsButton;
     private javax.swing.JPanel operationsPanel;
-    private javax.swing.JButton removeButton;
+    private javax.swing.JTable operationsTable;
     // End of variables declaration//GEN-END:variables
 }

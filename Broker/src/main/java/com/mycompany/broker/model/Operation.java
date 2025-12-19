@@ -1,21 +1,24 @@
 package com.mycompany.broker.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dam2_alu04@inf.ald
  */
-public class Operation implements Runnable {
+public class Operation implements Runnable, Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String type;
-    private double limit;
-    private double quantity;
+    private double price;
+    private int quantity;
     private Agent agent;
-    private Thread executorThread;
-
-    public Operation(Agent agent, String type, double limit, double quantity) {
+    private transient Thread executorThread;
+    
+    public Operation(Agent agent, String type, double price, int quantity) {
         this.agent= agent;
         setType(type);
-        this.limit = limit;
+        this.price = price;
         this.quantity = quantity;
         executorThread = new Thread(this);
         executorThread.start();
@@ -51,20 +54,25 @@ public class Operation implements Runnable {
         }
     }
 
-    public double getLimit() {
-        return limit;
+    public double getPrice() {
+        return price;
     }
 
-    public void setLimit(double limit) {
-        this.limit = limit;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Operation{" + "type=" + type + ", price=" + price + ", quantity=" + quantity + ", agent=" + agent + ", executorThread=" + executorThread + '}';
     }
 
 }

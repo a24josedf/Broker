@@ -64,9 +64,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="acceptBButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
-                      <Component id="editBButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                       <Component id="cancelBButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -87,7 +85,6 @@
                       <EmptySpace pref="22" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cancelBButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="editBButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="acceptBButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -113,11 +110,6 @@
             <Component class="javax.swing.JButton" name="cancelBButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="editBButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="acceptBButton">
@@ -154,9 +146,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="acceptSButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
-                      <Component id="editSButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                       <Component id="cancelSButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -177,7 +167,6 @@
                       <EmptySpace pref="22" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cancelSButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="editSButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="acceptSButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -203,11 +192,6 @@
             <Component class="javax.swing.JButton" name="cancelSButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="editSButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="acceptSButton">
