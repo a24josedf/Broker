@@ -9,11 +9,11 @@ public class Operation implements Runnable {
     private String type;
     private double limit;
     private double quantity;
-    private Agent user;
+    private Agent agent;
     private Thread executorThread;
 
-    public Operation(Agent user, String type, double limit, double quantity) {
-        this.user= user;
+    public Operation(Agent agent, String type, double limit, double quantity) {
+        this.agent= agent;
         setType(type);
         this.limit = limit;
         this.quantity = quantity;
@@ -33,12 +33,12 @@ public class Operation implements Runnable {
                     //duermo
     }
 
-    public Agent getUser() {
-        return user;
+    public Agent getAgent() {
+        return agent;
     }
 
-    public void setUser(Agent user) {
-        this.user = user;
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 
     public String getType() {

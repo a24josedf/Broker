@@ -2,7 +2,7 @@ package com.mycompany.broker.controller;
 
 import com.mycompany.broker.model.MainModel;
 import com.mycompany.broker.model.Agent;
-import com.mycompany.broker.view.SessionJDialog;
+import com.mycompany.broker.view.AgentJDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author dam2_alu09@inf.ald
  */
-public class SessionJDialogController {
+public class CreateAgentJDialogController {
 
-    private final SessionJDialog view;
+    private final AgentJDialog view;
     private final MainModel model;
 
-    public SessionJDialogController(SessionJDialog view, MainModel model) throws IOException, ClassNotFoundException {
+    public CreateAgentJDialogController(AgentJDialog view, MainModel model) throws IOException, ClassNotFoundException {
         this.view = view;
         this.model = model;
         manageLogInButton();
@@ -90,18 +90,18 @@ public class SessionJDialogController {
                     try {
                         verifyLogIn();
                     } catch (IOException ex) {
-                        Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                 }
                 try {
                     manageLogInButton();
                 } catch (IOException ex) {
-                    Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
@@ -122,17 +122,17 @@ public class SessionJDialogController {
                     try {
                     verifySingUp();
                     } catch (IOException ex) {
-                        Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
                 try {
                     manageLogInButton();
                 } catch (IOException ex) {
-                    Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(SessionJDialogController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CreateAgentJDialogController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };

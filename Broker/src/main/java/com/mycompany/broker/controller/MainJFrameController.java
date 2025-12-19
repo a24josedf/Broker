@@ -2,7 +2,7 @@ package com.mycompany.broker.controller;
 
 import com.mycompany.broker.model.MainModel;
 import com.mycompany.broker.view.MainJFrame;
-import com.mycompany.broker.view.SessionJDialog;
+import com.mycompany.broker.view.AgentJDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -36,9 +36,9 @@ public class MainJFrameController {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SessionJDialog sjd = new SessionJDialog(view, true);
+                AgentJDialog sjd = new AgentJDialog(view, true);
                 try {
-                    SessionJDialogController sjdc = new SessionJDialogController(sjd, model);
+                    CreateAgentJDialogController sjdc = new CreateAgentJDialogController(sjd, model);
                 } catch (IOException ex) {
                     Logger.getLogger(MainJFrameController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {

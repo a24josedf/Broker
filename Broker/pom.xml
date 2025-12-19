@@ -10,4 +10,11 @@
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>com.mycompany.broker.Broker</exec.mainClass>
     </properties>
+    <dependencies>
+    <dependency>
+        <groupId>org.jfree</groupId>
+        <artifactId>jfreechart</artifactId>
+        <version>1.5.4</version>
+    </dependency>
+</dependencies>
 </project>

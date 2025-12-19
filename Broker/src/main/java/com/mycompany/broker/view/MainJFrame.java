@@ -1,11 +1,16 @@
 package com.mycompany.broker.view;
 
+import com.mycompany.broker.model.Graphic;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 /**
  *
  * @author dam2_alu09@inf.ald
@@ -17,6 +22,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        Graphic.addGraphic(this.getGraphicPanel());
     }
 
     /**
@@ -31,12 +37,15 @@ public class MainJFrame extends javax.swing.JFrame {
         mainTabbedPane = new javax.swing.JTabbedPane();
         graphicPanel = new javax.swing.JPanel();
         agentsPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        addButton = new javax.swing.JButton();
+        agentsScrollPane = new javax.swing.JScrollPane();
+        agentsTable = new javax.swing.JTable();
         editButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         operationsPanel = new javax.swing.JPanel();
+        agentsOperationScrollPane = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,16 +53,16 @@ public class MainJFrame extends javax.swing.JFrame {
         graphicPanel.setLayout(graphicPanelLayout);
         graphicPanelLayout.setHorizontalGroup(
             graphicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGap(0, 406, Short.MAX_VALUE)
         );
         graphicPanelLayout.setVerticalGroup(
             graphicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 269, Short.MAX_VALUE)
+            .addGap(0, 315, Short.MAX_VALUE)
         );
 
         mainTabbedPane.addTab("Bolsa", graphicPanel);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        agentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,53 +73,70 @@ public class MainJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        agentsScrollPane.setViewportView(agentsTable);
 
-        addButton.setText("Añadir");
-
-        editButton.setText("Editar");
+        editButton.setText("Editar...");
 
         removeButton.setText("Eliminar");
+
+        addButton.setText("Añadir...");
+
+        jButton1.setText("Operaciones...");
 
         javax.swing.GroupLayout agentsPanelLayout = new javax.swing.GroupLayout(agentsPanel);
         agentsPanel.setLayout(agentsPanelLayout);
         agentsPanelLayout.setHorizontalGroup(
             agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agentsPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addComponent(addButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(editButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(removeButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(agentsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         agentsPanelLayout.setVerticalGroup(
             agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agentsPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(agentsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addButton)
-                .addGap(18, 18, 18)
-                .addComponent(editButton)
-                .addGap(18, 18, 18)
-                .addComponent(removeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(agentsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(agentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
+                    .addComponent(editButton)
+                    .addComponent(removeButton)
+                    .addComponent(jButton1))
+                .addGap(26, 26, 26))
         );
 
         mainTabbedPane.addTab("Agentes", agentsPanel);
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        agentsOperationScrollPane.setViewportView(jList2);
 
         javax.swing.GroupLayout operationsPanelLayout = new javax.swing.GroupLayout(operationsPanel);
         operationsPanel.setLayout(operationsPanelLayout);
         operationsPanelLayout.setHorizontalGroup(
             operationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGroup(operationsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(agentsOperationScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         operationsPanelLayout.setVerticalGroup(
             operationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 269, Short.MAX_VALUE)
+            .addGroup(operationsPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(agentsOperationScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Operaciones", operationsPanel);
@@ -123,9 +149,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainTabbedPane)
-                .addContainerGap())
+            .addComponent(mainTabbedPane)
         );
 
         pack();
@@ -135,13 +159,88 @@ public class MainJFrame extends javax.swing.JFrame {
         this.addButton.addActionListener(al);
     }
 
+    public JButton getAddButton() {
+        return addButton;
+    }
+
+    public void setAddButton(JButton addButton) {
+        this.addButton = addButton;
+    }
+
+    public JPanel getAgentsPanel() {
+        return agentsPanel;
+    }
+
+    public void setAgentsPanel(JPanel agentsPanel) {
+        this.agentsPanel = agentsPanel;
+    }
+
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(JButton editButton) {
+        this.editButton = editButton;
+    }
+
+    public JPanel getGraphicPanel() {
+        return graphicPanel;
+    }
+
+    public void setGraphicPanel(JPanel graphicPanel) {
+        this.graphicPanel = graphicPanel;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return agentsScrollPane;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.agentsScrollPane = jScrollPane1;
+    }
+
+    public JTable getjTable1() {
+        return agentsTable;
+    }
+
+    public void setjTable1(JTable jTable1) {
+        this.agentsTable = jTable1;
+    }
+
+    public JTabbedPane getMainTabbedPane() {
+        return mainTabbedPane;
+    }
+
+    public void setMainTabbedPane(JTabbedPane mainTabbedPane) {
+        this.mainTabbedPane = mainTabbedPane;
+    }
+
+    public JPanel getOperationsPanel() {
+        return operationsPanel;
+    }
+
+    public void setOperationsPanel(JPanel operationsPanel) {
+        this.operationsPanel = operationsPanel;
+    }
+
+    public JButton getRemoveButton() {
+        return removeButton;
+    }
+
+    public void setRemoveButton(JButton removeButton) {
+        this.removeButton = removeButton;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JScrollPane agentsOperationScrollPane;
     private javax.swing.JPanel agentsPanel;
+    private javax.swing.JScrollPane agentsScrollPane;
+    private javax.swing.JTable agentsTable;
     private javax.swing.JButton editButton;
     private javax.swing.JPanel graphicPanel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JPanel operationsPanel;
     private javax.swing.JButton removeButton;

@@ -9,12 +9,12 @@ import javax.swing.JTextField;
  *
  * @author dam2_alu09@inf.ald
  */
-public class SessionJDialog extends javax.swing.JDialog {
+public class AgentJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form SessionJDialog
      */
-    public SessionJDialog(java.awt.Frame parent, boolean modal) {
+    public AgentJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -35,7 +35,8 @@ public class SessionJDialog extends javax.swing.JDialog {
         addButton = new javax.swing.JButton();
         balanceLabel = new javax.swing.JLabel();
         balanceTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        stockLabel = new javax.swing.JLabel();
+        stockTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,7 +60,7 @@ public class SessionJDialog extends javax.swing.JDialog {
 
         balanceLabel.setText("Balance:*");
 
-        jLabel1.setText("jLabel1");
+        stockLabel.setText("Stock:*");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,18 +75,16 @@ public class SessionJDialog extends javax.swing.JDialog {
                         .addGap(9, 9, 9)
                         .addComponent(cancelButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(balanceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(balanceLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(titleLabel)
+                            .addComponent(stockLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usernameTextField)
-                            .addComponent(balanceTextField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLabel)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(balanceTextField)
+                            .addComponent(stockTextField))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -102,8 +101,10 @@ public class SessionJDialog extends javax.swing.JDialog {
                     .addComponent(balanceLabel)
                     .addComponent(balanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(stockLabel)
+                    .addComponent(stockTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton)
                     .addComponent(cancelButton))
@@ -128,7 +129,7 @@ public class SessionJDialog extends javax.swing.JDialog {
     public void setLoginButton(JButton loginButton) {
         this.cancelButton = loginButton;
     }
-    
+
     public JButton getSignupButton() {
         return addButton;
     }
@@ -152,26 +153,35 @@ public class SessionJDialog extends javax.swing.JDialog {
     public void setBalance(String balance) {
         this.balanceTextField.setText(balance);
     }
-    
-    public void addSingUpButtonActionListener(ActionListener al){
+
+    public String getStock() {
+        return stockTextField.getText();
+    }
+
+    public void setStockTextField(String stock) {
+        this.stockTextField.setText(stock);
+    }
+
+    public void addSingUpButtonActionListener(ActionListener al) {
         this.getSignupButton().addActionListener(al);
     }
-    
-    public void addLogInButtonActionListener(ActionListener al){
+
+    public void addLogInButtonActionListener(ActionListener al) {
         this.getLoginButton().addActionListener(al);
     }
-    
-    public void enableDisableLogInButton(boolean enableDisable){
+
+    public void enableDisableLogInButton(boolean enableDisable) {
         this.getLoginButton().setEnabled(enableDisable);
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JTextField balanceTextField;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel stockLabel;
+    private javax.swing.JTextField stockTextField;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
